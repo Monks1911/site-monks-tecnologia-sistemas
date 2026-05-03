@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monks Tecnologia & Sistemas | Sites, Sistemas e Assistência Técnica</title>
+  <meta name="description" content="A Monks Tecnologia & Sistemas cria sites profissionais, sistemas sob medida e oferece suporte técnico para empresas em Joinville e região." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070a12;
+      --bg-2: #0b1020;
+      --card: rgba(255, 255, 255, 0.075);
+      --card-strong: rgba(255, 255, 255, 0.115);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #f5f7fb;
+      --muted: #aab3c5;
+      --muted-2: #78849c;
+      --brand: #65f0ff;
+      --brand-2: #8b5cf6;
+      --brand-3: #22c55e;
+      --danger: #ff4d6d;
+      --warning: #fbbf24;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(101, 240, 255, 0.16), transparent 34%),
+        radial-gradient(circle at 80% 12%, rgba(139, 92, 246, 0.24), transparent 32%),
+        radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.10), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      opacity: 0.45;
+      z-index: -2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 36px, var(--max));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 10, 18, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(101, 240, 255, .20);
+      display: grid;
+      place-items: center;
+      padding: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 34px rgba(101, 240, 255, 0.18);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 3px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .menu a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+      font-size: 0.93rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      cursor: pointer;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #061018;
+      background: linear-gradient(135deg, var(--brand), #b8fffb);
+      box-shadow: 0 16px 38px rgba(101, 240, 255, .22);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, .08);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, .12);
+      border-color: rgba(255, 255, 255, .26);
+    }
+
+    .btn-whatsapp {
+      color: #061018;
+      background: linear-gradient(135deg, #22c55e, #86efac);
+      box-shadow: 0 16px 38px rgba(34, 197, 94, .20);
+    }
+
+    .hero {
+      position: relative;
+      padding: 82px 0 62px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid rgba(101, 240, 255, .22);
+      color: #c7fbff;
+      background: rgba(101, 240, 255, .075);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.65rem, 7vw, 5.55rem);
+      line-height: .94;
+      letter-spacing: -0.07em;
+      max-width: 760px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff, var(--brand), #bfa7ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.13rem;
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 690px;
+    }
+
+    .proof {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .055);
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 1.4rem;
+    }
+
+    .proof span {
+      display: block;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+
+    .mockup-wrap {
+      position: relative;
+    }
+
+    .glow-card {
+      position: absolute;
+      inset: -20px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, rgba(101, 240, 255, .18), rgba(139, 92, 246, .20));
+      filter: blur(35px);
+      opacity: .9;
+      z-index: -1;
+    }
+
+    .browser {
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .browser-top {
+      height: 48px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      background: rgba(255, 255, 255, .065);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .32);
+    }
+
+    .url-bar {
+      margin-left: 10px;
+      flex: 1;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .22);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      padding-inline: 12px;
+      font-size: .76rem;
+    }
+
+    .dashboard {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: 410px;
+      background: rgba(7, 10, 18, .66);
+    }
+
+    .login-preview {
+      min-height: 410px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, .95), rgba(51, 65, 85, .86));
+    }
+
+    .demo-card-preview {
+      width: min(100%, 380px);
+      border-radius: 26px;
+      background: #f8fafc;
+      color: #020617;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .25);
+    }
+
+    .demo-icon-preview {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #111827, #334155);
+      color: #fff;
+      font-size: 1.8rem;
+    }
+
+    .demo-label-preview {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(229, 36, 40, .10);
+      color: #e52428;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+
+    .demo-card-preview h3 {
+      font-size: 1.8rem;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .demo-card-preview p {
+      color: #475569;
+      font-size: .95rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .demo-credentials {
+      display: grid;
+      gap: 6px;
+      margin: 20px 0;
+      padding: 16px;
+      border-radius: 16px;
+      background: #e2e8f0;
+      text-align: left;
+    }
+
+    .demo-credentials span {
+      color: #64748b;
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .demo-credentials strong {
+      color: #020617;
+      font-size: .95rem;
+    }
+
+    .login-demo-btn {
+      width: 100%;
+      margin-top: 8px;
+      background: #e52428;
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .login-demo-btn:hover {
+      background: #c91f23;
+    }
+
+    .showcase-btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .demo-section-card {
+      align-self: center;
+      justify-self: center;
+    }
+
+    .demo-section-card .demo-label-preview {
+      background: rgba(101, 240, 255, .14);
+      color: #0369a1;
+    }
+
+    .side-demo {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      padding: 14px;
+    }
+
+    .side-demo strong {
+      display: block;
+      margin-bottom: 15px;
+      font-size: .9rem;
+    }
+
+    .side-link {
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.065);
+      margin-bottom: 10px;
+    }
+
+    .screen-demo {
+      display: grid;
+      gap: 14px;
+    }
+
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .screen-head h3 {
+      font-size: 1.1rem;
+    }
+
+    .pill {
+      border: 1px solid rgba(34, 197, 94, .25);
+      background: rgba(34, 197, 94, .10);
+      color: #bbf7d0;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: .74rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.07);
+      padding: 14px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: .74rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.05rem;
+    }
+
+    .table-demo {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .row-demo {
+      display: grid;
+      grid-template-columns: 1fr .7fr .7fr;
+      gap: 12px;
+      padding: 13px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .row-demo:first-child {
+      color: var(--text);
+      font-weight: 800;
+      background: rgba(255,255,255,.07);
+    }
+
+    .row-demo:last-child {
+      border-bottom: 0;
+    }
+
+    .tag {
+      width: fit-content;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 800;
+    }
+
+    .tag.green { background: rgba(34,197,94,.14); color: #bbf7d0; }
+    .tag.yellow { background: rgba(251,191,36,.14); color: #fde68a; }
+    .tag.red { background: rgba(255,77,109,.14); color: #fecdd3; }
+
+    section {
+      padding: 74px 0;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .kicker {
+      color: var(--brand);
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 16px;
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.095), rgba(255,255,255,.052));
+      padding: 24px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.18);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      background: rgba(101, 240, 255, .12);
+      border: 1px solid rgba(101, 240, 255, .18);
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: .95rem;
+    }
+
+    .case-box {
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 26px;
+      align-items: stretch;
+      border: 1px solid rgba(101, 240, 255, .18);
+      border-radius: 34px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 0 0, rgba(101, 240, 255, .13), transparent 36%),
+        rgba(255,255,255,.062);
+      box-shadow: var(--shadow);
+    }
+
+    .case-panel {
+      border-radius: 26px;
+      background: rgba(0,0,0,.24);
+      border: 1px solid var(--line);
+      padding: 26px;
+    }
+
+    .case-panel h3 {
+      font-size: 1.65rem;
+      line-height: 1.12;
+      letter-spacing: -.03em;
+    }
+
+    .case-panel p {
+      color: var(--muted);
+      line-height: 1.72;
+      margin-top: 16px;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ba-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.064);
+      padding: 22px;
+    }
+
+    .ba-card h4 {
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+
+    .ba-card ul,
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+    }
+
+    .ba-card li,
+    .feature-list li {
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+    }
+
+    .ba-card li::before,
+    .feature-list li::before {
+      content: "✓";
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .feature {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      padding: 18px;
+      min-height: 132px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 7px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.48;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .offer {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255,255,255,.065);
+      padding: 26px;
+    }
+
+    .offer.featured {
+      border-color: rgba(101, 240, 255, .45);
+      background:
+        radial-gradient(circle at top right, rgba(101, 240, 255, .18), transparent 38%),
+        rgba(255,255,255,.085);
+      transform: translateY(-10px);
+    }
+
+    .badge {
+      width: fit-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(101, 240, 255, .12);
+      border: 1px solid rgba(101, 240, 255, .22);
+      color: #c7fbff;
+      font-weight: 900;
+      font-size: .75rem;
+      margin-bottom: 16px;
+    }
+
+    .offer h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .offer p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .offer .btn {
+      margin-top: 22px;
+      width: 100%;
+    }
+
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .industry {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .cta {
+      padding-bottom: 96px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(101, 240, 255, .24);
+      border-radius: 38px;
+      padding: 42px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(101, 240, 255, .18), transparent 30%),
+        radial-gradient(circle at 100% 70%, rgba(139, 92, 246, .20), transparent 34%),
+        rgba(255,255,255,.075);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      max-width: 760px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      line-height: 1.68;
+      margin-top: 16px;
+      max-width: 760px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      background: rgba(0,0,0,.18);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .proof-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .menu,
+      .nav-actions {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav.open .menu,
+      .nav.open .nav-actions {
+        display: flex;
+      }
+
+      .nav.open .nav-inner {
+        height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .nav.open .menu,
+      .nav.open .nav-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-grid,
+      .case-box,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .side-demo {
+        display: none;
+      }
+
+      .cards,
+      .offer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .offer.featured {
+        transform: none;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 26px, var(--max));
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+
+      .proof-row,
+      .metric-grid,
+      .before-after,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .browser {
+        border-radius: 22px;
+      }
+
+      .row-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        padding: 28px;
+        border-radius: 28px;
+      }
+    }
+
+    .demo-access {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .demo-access strong {
+        color: var(--text);
+    }
+
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#topo" class="brand" aria-label="Monks Tecnologia & Sistemas">
+        <div class="brand-logo">
+          <img src="images/logo-monks.png" alt="Logo Monks Tecnologia & Sistemas">
+        </div>
+        <div class="brand-text">
+          <strong>Monks Tecnologia & Sistemas</strong>
+          <span>Sites • Sistemas • Perfil no Google • PCs</span>
+        </div>
+      </a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#google-business">Perfil no Google</a>
+        <a href="#case">Projeto SOS</a>
+        <a href="#demo">Sistema demo</a>
+        <a href="#pacotes">Soluções</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="#demo">Ver demo</a>
+        <a class="btn btn-whatsapp js-whatsapp" href="#" data-whatsapp="padrao">WhatsApp</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">🚀 Tecnologia sob medida para empresas reais</div>
+          <h1>Transformamos empresas no improviso em negócios <span class="gradient-text">mais organizados, profissionais e prontos para vender melhor.</span></h1>
+          <p>
+            Criamos sites profissionais, sistemas sob medida, Perfil da Empresa no Google e suporte técnico para pequenas empresas que querem sair da bagunça, ganhar presença digital e trabalhar com mais controle.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-whatsapp js-whatsapp" href="#" data-whatsapp="padrao">Quero um orçamento</a>
+            <a class="btn btn-secondary" href="#case">Ver projeto real</a>
+            <a class="btn btn-secondary" href="#demo">Abrir sistema demo</a>
+            <a class="btn btn-secondary" href="https://share.google/k7lIPCIOJ84ygQC7V" target="_blank" rel="noopener">Ver no Google</a>
+          </div>
+
+          <div class="proof-row">
+            <div class="proof">
+              <strong>Site</strong>
+              <span>Presença profissional para sua empresa aparecer melhor.</span>
+            </div>
+            <div class="proof">
+              <strong>Sistema</strong>
+              <span>Controle de clientes, orçamentos, PDFs e relatórios.</span>
+            </div>
+            <div class="proof">
+              <strong>Suporte</strong>
+              <span>PCs, notebooks, configuração e manutenção técnica.</span>
+            </div>
+            <div class="proof">
+                <strong>Google</strong>
+                <span>Perfil da empresa no Google para aparecer nas buscas e no Maps.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-wrap reveal" id="vitrine-digital">
+          <div class="glow-card"></div>
+          <div class="browser">
+            <div class="browser-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <div class="url-bar">monks-tecnologia.com.br/solucoes</div>
+            </div>
+
+            <div class="dashboard">
+              <div class="login-preview">
+                <div class="demo-card-preview">
+                  <div class="demo-icon-preview">⚙️</div>
+
+                  <span class="demo-label-preview">Site + Sistema + Google</span>
+
+                  <h3>Do site ao sistema: tudo conectado</h3>
+
+                  <p>
+                    Sua empresa pode ter uma presença profissional na internet, um sistema próprio para organizar a rotina e um perfil no Google pronto para receber clientes.
+                  </p>
+
+                  <div class="demo-credentials">
+                    <span>Na prática, você recebe</span>
+                    <strong>Uma vitrine online para sua empresa</strong>
+                    <strong>Um sistema para controlar orçamentos</strong>
+                    <strong>Mais presença nas buscas locais</strong>
+                  </div>
+
+                  <a class="btn btn-primary showcase-btn" href="#case">
+                    Ver projeto real da SOS
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">O que fazemos</div>
+          <h2>Tecnologia sem enrolação para resolver problema de verdade.</h2>
+          <p>
+            Do computador travando ao sistema interno da empresa, a Monks junta manutenção, web e desenvolvimento em uma solução só.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">🌐</div>
+            <h3>Sites profissionais</h3>
+            <p>Sites institucionais, páginas de venda e vitrines digitais para empresas que precisam passar confiança logo no primeiro clique.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🧾</div>
+            <h3>Sistemas sob medida</h3>
+            <p>Sistemas para organizar clientes, orçamentos, serviços, pagamentos, relatórios, PDFs e rotinas internas da empresa.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">💻</div>
+            <h3>PCs e suporte técnico</h3>
+            <p>Montagem, manutenção, limpeza, configuração de sistema operacional, melhoria de desempenho e suporte para computadores.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">📍</div>
+            <h3>Perfil no Google</h3>
+            <p>Criação e configuração do Perfil da Empresa no Google para sua empresa aparecer melhor nas buscas, no Google Maps e receber contatos com mais facilidade.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="google-business">
+  <div class="container">
+    <div class="case-box reveal">
+      <div class="case-panel">
+        <div class="kicker">Perfil no Google</div>
+        <h3>Faça sua empresa aparecer melhor no Google e no Maps.</h3>
+        <p>
+          Além de sites e sistemas, a Monks também ajuda sua empresa a criar e configurar o Perfil da Empresa no Google, deixando as informações mais profissionais para quem procura seus serviços na região.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary js-whatsapp" href="#" data-whatsapp="google">Quero aparecer no Google</a>
+          <a class="btn btn-secondary" href="https://share.google/k7lIPCIOJ84ygQC7V" target="_blank" rel="noopener">Ver nosso perfil</a>
+          <a class="btn btn-secondary" href="#pacotes">Ver soluções</a>
+        </div>
+      </div>
+
+      <div class="before-after">
+        <div class="ba-card">
+          <h4>O que podemos configurar</h4>
+          <ul>
+            <li>Nome da empresa</li>
+            <li>Categoria do negócio</li>
+            <li>Telefone e WhatsApp</li>
+            <li>Endereço ou área de atendimento</li>
+            <li>Horário de funcionamento</li>
+          </ul>
+        </div>
+
+        <div class="ba-card">
+          <h4>Por que isso ajuda</h4>
+          <ul>
+            <li>Mais presença nas buscas locais</li>
+            <li>Empresa com aparência mais confiável</li>
+            <li>Facilita contato pelo Google</li>
+            <li>Ajuda clientes a encontrarem sua empresa</li>
+            <li>Combina com site profissional e sistema próprio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="case">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Projeto real</div>
+          <h2>A SOS Soluções saiu do improviso e ganhou uma estrutura digital completa.</h2>
+          <p>
+            Criamos um site profissional e um sistema próprio de gestão para centralizar clientes, orçamentos, pagamentos, relatórios e documentos.
+          </p>
+        </div>
+
+        <div class="case-box reveal">
+          <div class="case-panel">
+            <h3>SOS Soluções: site + sistema + domínio + SSL</h3>
+            <p>
+              A empresa precisava organizar a rotina e passar mais profissionalismo. A Monks desenvolveu uma solução online com login, clientes, orçamentos, geração de PDF, relatórios, backup automático, domínio próprio e certificado SSL.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://sossolucoes.net.br/" target="_blank" rel="noopener">Ver site da SOS</a>
+              <a class="btn btn-secondary" href="https://sistema-demo-gestao-orcamentos.onrender.com/login" target="_blank" rel="noopener">Ver sistema demo</a>
+            </div>
+          </div>
+
+          <div class="before-after">
+            <div class="ba-card">
+              <h4>Antes</h4>
+              <ul>
+                <li>Orçamentos espalhados</li>
+                <li>Controle manual</li>
+                <li>Informações perdidas no WhatsApp</li>
+                <li>Visual menos profissional</li>
+              </ul>
+            </div>
+
+            <div class="ba-card">
+              <h4>Depois</h4>
+              <ul>
+                <li>Sistema online com login</li>
+                <li>Clientes e orçamentos organizados</li>
+                <li>PDF profissional com logo</li>
+                <li>Relatórios e backups automáticos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">Sistema demo</div>
+          <h2>Teste uma demonstração real antes de chamar a Monks.</h2>
+          <p>
+            Depois de entender o que fazemos, você pode abrir uma versão de teste do sistema para ver a estrutura funcionando por dentro.
+          </p>
+        </div>
+
+        <div class="case-box reveal">
+          <div class="case-panel">
+            <h3>Como acessar a demo</h3>
+            <p>
+              Clique no botão para abrir a tela de login em uma nova aba. Use o usuário e a senha de teste abaixo para conhecer o painel, os clientes, os orçamentos e os recursos principais.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://sistema-demo-gestao-orcamentos.onrender.com/login" target="_blank" rel="noopener">
+                Abrir sistema demo
+              </a>
+              <a class="btn btn-secondary js-whatsapp" href="#" data-whatsapp="sistema">Quero um sistema assim</a>
+            </div>
+          </div>
+
+          <div class="demo-card-preview demo-section-card">
+            <div class="demo-icon-preview">🧪</div>
+
+            <span class="demo-label-preview">Demonstração online</span>
+
+            <h3>Dados de acesso</h3>
+
+            <p>
+              Use estes dados somente para testar a demonstração do sistema.
+            </p>
+
+            <div class="demo-credentials">
+              <span>Login da demo</span>
+              <strong>Usuário: admin</strong>
+              <strong>Senha: Admin123</strong>
+            </div>
+
+            <a class="btn btn-primary login-demo-btn" href="https://sistema-demo-gestao-orcamentos.onrender.com/login" target="_blank" rel="noopener">
+              Abrir tela de login
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">Por dentro do sistema</div>
+          <h2>Um painel simples, bonito e feito para o jeito da empresa trabalhar.</h2>
+          <p>
+            Nada de sistema gigante cheio de botão inútil. A ideia é construir o que a empresa realmente usa no dia a dia.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature reveal">
+            <span>🔐</span>
+            <strong>Login seguro</strong>
+            <span>Acesso com usuários, permissões e proteção para dados internos.</span>
+          </div>
+          <div class="feature reveal">
+            <span>👥</span>
+            <strong>Clientes</strong>
+            <span>Cadastro com telefone, endereço, CPF/CNPJ e histórico.</span>
+          </div>
+          <div class="feature reveal">
+            <span>🧾</span>
+            <strong>Orçamentos</strong>
+            <span>Itens, valores, status e controle do que foi aprovado ou recusado.</span>
+          </div>
+          <div class="feature reveal">
+            <span>📄</span>
+            <strong>PDF profissional</strong>
+            <span>Documentos com logo, dados do cliente, itens e valores.</span>
+          </div>
+          <div class="feature reveal">
+            <span>📊</span>
+            <strong>Relatórios</strong>
+            <span>Filtros por período, status e pagamento para entender os números.</span>
+          </div>
+          <div class="feature reveal">
+            <span>💾</span>
+            <strong>Backups</strong>
+            <span>Cópias automáticas para reduzir o risco de perda de dados.</span>
+          </div>
+          <div class="feature reveal">
+            <span>🌍</span>
+            <strong>Online</strong>
+            <span>Sistema hospedado, com domínio ou subdomínio próprio.</span>
+          </div>
+          <div class="feature reveal">
+            <span>🛡️</span>
+            <strong>SSL</strong>
+            <span>Acesso com cadeado de segurança e aparência profissional.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pacotes">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">Soluções</div>
+          <h2>Escolha o nível de transformação da sua empresa.</h2>
+          <p>
+            Cada projeto é analisado conforme a necessidade. A Monks pode criar desde uma vitrine profissional até um sistema completo de gestão.
+          </p>
+        </div>
+
+        <div class="offer-grid">
+          <article class="offer reveal">
+            <div class="badge">Presença digital</div>
+            <h3>Site Profissional</h3>
+            <p>Ideal para empresas que precisam aparecer melhor na internet, apresentar serviços e receber contatos pelo WhatsApp.</p>
+            <ul class="feature-list">
+              <li>Layout moderno</li>
+              <li>Botão para WhatsApp</li>
+              <li>Seções de serviços</li>
+              <li>Publicação online</li>
+            </ul>
+            <a class="btn btn-secondary js-whatsapp" href="#" data-whatsapp="site">Consultar site</a>
+          </article>
+
+          <article class="offer featured reveal">
+            <div class="badge">Mais procurado</div>
+            <h3>Combo Digital Completo</h3>
+            <p>Para empresas que querem uma vitrine profissional, presença no Google e um sistema próprio para organizar a operação.</p>
+            <ul class="feature-list">
+                <li>Site institucional</li>
+                <li>Sistema sob medida</li>
+                <li>Perfil no Google configurado</li>
+                <li>Clientes, orçamentos e relatórios</li>
+                <li>Deploy, domínio e SSL</li>
+            </ul>
+            <a class="btn btn-primary js-whatsapp" href="#" data-whatsapp="combo">Quero o combo completo</a>
+          </article>
+
+          <article class="offer reveal">
+            <div class="badge">Suporte técnico</div>
+            <h3>PCs e Tecnologia</h3>
+            <p>Para quem precisa de montagem, manutenção, formatação, configuração e melhoria de desempenho em computadores.</p>
+            <ul class="feature-list">
+              <li>Manutenção de desktops</li>
+              <li>Manutenção de notebooks</li>
+              <li>Configuração de sistemas</li>
+              <li>Suporte direto</li>
+            </ul>
+            <a class="btn btn-secondary js-whatsapp" href="#" data-whatsapp="suporte">Chamar suporte</a>
+          </article>
+        </div>
+
+        <div class="industries reveal">
+          <span class="industry">Empreiteiras</span>
+          <span class="industry">Assistências técnicas</span>
+          <span class="industry">Oficinas</span>
+          <span class="industry">Prestadores de serviço</span>
+          <span class="industry">Lojas pequenas</span>
+          <span class="industry">Contadores</span>
+          <span class="industry">Autônomos</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div>
+            <div class="kicker">Bora transformar?</div>
+            <h2>Sua empresa também pode ter um site bonito e um sistema que trabalha junto com você.</h2>
+            <p>
+              Chega de orçamento perdido, planilha bagunçada e informação jogada no WhatsApp. A Monks cria uma solução sob medida para deixar sua operação mais profissional.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-whatsapp js-whatsapp" href="#" data-whatsapp="padrao">Falar no WhatsApp</a>
+            <a class="btn btn-secondary" href="https://sistema-demo-gestao-orcamentos.onrender.com/login" target="_blank" rel="noopener">Ver demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Monks Tecnologia & Sistemas. Todos os direitos reservados.</span>
+      <span>
+        Joinville e região • Sites • Sistemas • Perfil no Google • PCs •
+        <a href="https://share.google/k7lIPCIOJ84ygQC7V" target="_blank" rel="noopener">Perfil no Google</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // ================================
+    // CONFIGURAÇÕES RÁPIDAS
+    // ================================
+    const WHATSAPP_NUMERO = "5547933868451"; // WhatsApp da Monks Tecnologia & Sistemas
+    const LINK_SISTEMA_DEMO = "https://sistema-demo-gestao-orcamentos.onrender.com/login";
+    const LINK_SITE_SOS = "https://sossolucoes.net.br/";
+    const LINK_GOOGLE_BUSINESS = "https://share.google/k7lIPCIOJ84ygQC7V";
+
+    const mensagensWhatsApp = {
+      padrao: "Olá! Vi o site da Monks Tecnologia & Sistemas e quero entender qual solução combina melhor com minha empresa: site, sistema, Perfil no Google ou suporte técnico.",
+      site: "Olá! Vi que a Monks cria sites profissionais e quero saber como ficaria um site para minha empresa.",
+      sistema: "Olá! Vi a demo do sistema da Monks e quero entender como seria um sistema parecido para minha empresa.",
+      google: "Olá! Vi que a Monks configura Perfil da Empresa no Google. Quero saber como deixar minha empresa aparecendo melhor nas buscas e no Maps.",
+      combo: "Olá! Vi o Combo Digital Completo da Monks e quero saber mais sobre site, sistema e Perfil no Google para minha empresa.",
+      suporte: "Olá! Vi que a Monks também faz suporte técnico e quero ajuda com computador, notebook ou configuração de sistema."
+    };
+
+    document.querySelectorAll(".js-whatsapp").forEach((link) => {
+      const tipoMensagem = link.dataset.whatsapp || "padrao";
+      const mensagem = mensagensWhatsApp[tipoMensagem] || mensagensWhatsApp.padrao;
+
+      link.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const nav = document.getElementById("nav");
+    const mobileToggle = document.getElementById("mobileToggle");
+
+    mobileToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".menu a").forEach((item) => {
+      item.addEventListener("click", () => {
+        nav.classList.remove("open");
+        mobileToggle.textContent = "☰";
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
