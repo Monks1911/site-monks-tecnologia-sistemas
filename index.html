@@ -1305,8 +1305,69 @@
     }
 
     @media (max-width: 520px) {
+      .monks-assistant {
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        max-width: calc(100vw - 20px);
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+
       .assistant-bubble {
-        display: none;
+        display: block;
+        position: absolute;
+        right: 78px;
+        bottom: 48px;
+        width: min(245px, calc(100vw - 112px));
+        margin-bottom: 0;
+        padding: 11px 12px;
+        border-radius: 18px 18px 6px 18px;
+        z-index: 2;
+      }
+
+      .assistant-bubble::after {
+        right: -6px;
+        bottom: 22px;
+        width: 12px;
+        height: 12px;
+      }
+
+      .assistant-bubble strong {
+        font-size: .74rem;
+        padding-right: 22px;
+        margin-bottom: 4px;
+      }
+
+      .assistant-bubble span {
+        font-size: .76rem;
+        line-height: 1.35;
+      }
+
+      .assistant-close {
+        right: -2px;
+        top: -12px;
+        width: 26px;
+        height: 26px;
+      }
+
+      .assistant-mini-bubble {
+        right: 68px;
+        bottom: 70px;
+        width: min(230px, calc(100vw - 102px));
+        font-size: .75rem;
+        padding: 10px 12px;
+      }
+
+      .assistant-character {
+        width: 74px;
+        height: 92px;
+        flex: 0 0 auto;
+      }
+
+      .monks-assistant.is-minimized .assistant-character {
+        width: 68px;
+        height: 84px;
       }
     }
 
@@ -1892,19 +1953,19 @@
       "google-business": {
         pose: "images/mascote-apontando.png",
         title: "Google também entra no jogo.",
-        text: "Perfil bem configurado ajuda o cliente a encontrar a sua empresa nas buscas e no Maps.",
+        text: "Perfil bem configurado ajuda o cliente a encontrar a empresa nas buscas e no Maps.",
         animation: "pointing"
       },
       "case": {
         pose: "images/mascote-feliz.png",
-        title: "Projeto real, da SOS SOLUÇÕES.",
+        title: "Case real, sem vitrine fake.",
         text: "Esse projeto mostra como a Monks transforma bagunça operacional em sistema bonito e útil.",
         animation: "happy"
       },
       "demo": {
         pose: "images/mascote-apontando.png",
-        title: "Quer ver na prática?",
-        text: "Acesse a demo e veja como clientes, orçamentos e serviços podem ficar organizados em um sistema próprio.",
+        title: "A demo está liberada.",
+        text: "Pode abrir o sistema e testar por dentro. É aqui que o visitante entende o valor rapidinho.",
         animation: "pointing"
       },
       "pacotes": {
