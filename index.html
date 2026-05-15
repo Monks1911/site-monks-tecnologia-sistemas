@@ -977,6 +977,350 @@
         color: var(--text);
     }
 
+
+    /* ================================
+       MASCOTE ASSISTENTE V2
+       Coloque as poses na pasta images/:
+       mascote-parado.png
+       mascote-falando.png
+       mascote-apontando.png
+       mascote-feliz.png
+       mascote-piscando.png
+    ================================= */
+    .monks-assistant {
+      --assistant-accent: var(--brand);
+      position: fixed;
+      right: 26px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      max-width: min(460px, calc(100vw - 28px));
+      animation: assistantEntrada .62s cubic-bezier(.2, .9, .2, 1) both;
+    }
+
+    .assistant-bubble {
+      position: relative;
+      width: 270px;
+      padding: 15px 16px 14px;
+      margin-bottom: 66px;
+      border-radius: 22px 22px 8px 22px;
+      background:
+        linear-gradient(180deg, rgba(12, 18, 32, .94), rgba(7, 10, 18, .90));
+      border: 1px solid rgba(101, 240, 255, .28);
+      box-shadow:
+        0 20px 56px rgba(0,0,0,.42),
+        0 0 34px rgba(101, 240, 255, .11),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      transform-origin: 100% 100%;
+      transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+    }
+
+    .assistant-bubble::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      bottom: 26px;
+      width: 14px;
+      height: 14px;
+      transform: rotate(45deg);
+      background: rgba(7, 10, 18, .92);
+      border-top: 1px solid rgba(101, 240, 255, .28);
+      border-right: 1px solid rgba(101, 240, 255, .28);
+    }
+
+
+
+    .assistant-mini-bubble {
+      position: absolute;
+      right: 92px;
+      bottom: 92px;
+      width: 235px;
+      padding: 12px 14px;
+      border-radius: 18px 18px 6px 18px;
+      background: rgba(7, 10, 18, .92);
+      border: 1px solid rgba(101, 240, 255, .26);
+      color: #dffcff;
+      font-size: .82rem;
+      line-height: 1.38;
+      font-weight: 700;
+      box-shadow:
+        0 16px 44px rgba(0,0,0,.36),
+        0 0 26px rgba(101, 240, 255, .10);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px) scale(.96);
+      transform-origin: 100% 100%;
+      pointer-events: none;
+      transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+    }
+
+    .assistant-mini-bubble::after {
+      content: "";
+      position: absolute;
+      right: -6px;
+      bottom: 18px;
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+      background: rgba(7, 10, 18, .92);
+      border-top: 1px solid rgba(101, 240, 255, .26);
+      border-right: 1px solid rgba(101, 240, 255, .26);
+    }
+
+    .assistant-bubble strong {
+      display: block;
+      color: #c7fbff;
+      font-size: .84rem;
+      letter-spacing: -.01em;
+      margin-bottom: 6px;
+      padding-right: 24px;
+    }
+
+    .assistant-bubble span {
+      display: block;
+      color: var(--muted);
+      font-size: .89rem;
+      line-height: 1.45;
+    }
+
+    .assistant-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 13px;
+      flex-wrap: wrap;
+    }
+
+    .assistant-mini-btn {
+      border: 1px solid rgba(101, 240, 255, .24);
+      background: rgba(101, 240, 255, .11);
+      color: #dffcff;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: .76rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .assistant-mini-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(101, 240, 255, .18);
+      border-color: rgba(101, 240, 255, .38);
+    }
+
+    .assistant-character {
+      position: relative;
+      width: 132px;
+      height: 162px;
+      border: 0;
+      display: grid;
+      place-items: end center;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      transition: transform .22s ease, filter .22s ease;
+      animation: assistantRespira 3.2s ease-in-out infinite;
+      overflow: visible;
+      isolation: isolate;
+    }
+
+    .assistant-character::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 4px;
+      width: 82px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.48), transparent 72%);
+      transform: translateX(-50%);
+      filter: blur(2px);
+      z-index: -1;
+      opacity: .9;
+      transition: transform .22s ease, opacity .22s ease;
+    }
+
+    .assistant-character::after {
+      content: "";
+      position: absolute;
+      inset: 12px 8px 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 35%, rgba(101, 240, 255, .20), transparent 62%);
+      filter: blur(20px);
+      z-index: -2;
+      opacity: .72;
+      pointer-events: none;
+    }
+
+    .assistant-character:hover {
+      transform: translateY(-7px) rotate(-1.8deg) scale(1.03);
+      filter: drop-shadow(0 0 18px rgba(101, 240, 255, .18));
+    }
+
+    .assistant-character:hover::before {
+      transform: translateX(-50%) scale(.88);
+      opacity: .7;
+    }
+
+    .assistant-character img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      filter: drop-shadow(0 18px 20px rgba(0,0,0,.45));
+      transition: transform .18s ease, opacity .18s ease;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .assistant-character.is-talking img {
+      animation: assistantFalando .34s ease-in-out 4;
+    }
+
+    .assistant-character.is-pointing img {
+      animation: assistantApontando .55s ease-in-out 2;
+    }
+
+    .assistant-character.is-happy img {
+      animation: assistantFeliz .52s ease-in-out 2;
+    }
+
+    .assistant-close {
+      position: absolute;
+      right: 4px;
+      top: -10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(7,10,18,.90);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(0,0,0,.30);
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    .assistant-close:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,.36);
+      transform: scale(1.04);
+    }
+
+    .monks-assistant.is-minimized .assistant-bubble {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px) scale(.94);
+      pointer-events: none;
+    }
+
+
+
+    .monks-assistant.is-minimized .assistant-mini-bubble {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .monks-assistant.is-minimized .assistant-character {
+      width: 96px;
+      height: 118px;
+    }
+
+    .monks-assistant.is-minimized .assistant-character::after {
+      opacity: .42;
+    }
+
+    .assistant-bubble.is-changing {
+      opacity: .74;
+      transform: translateY(4px) scale(.985);
+    }
+
+    @keyframes assistantEntrada {
+      from { opacity: 0; transform: translateY(24px) scale(.94); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes assistantRespira {
+      0%, 100% { transform: translateY(0) rotate(-.7deg); }
+      50% { transform: translateY(-6px) rotate(1.1deg); }
+    }
+
+    @keyframes assistantFalando {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.035); }
+    }
+
+    @keyframes assistantApontando {
+      0%, 100% { transform: translateX(0) rotate(0); }
+      50% { transform: translateX(-7px) rotate(-4deg); }
+    }
+
+    @keyframes assistantFeliz {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+
+    @media (max-width: 720px) {
+      .monks-assistant {
+        right: 14px;
+        bottom: 12px;
+        gap: 8px;
+      }
+
+      .assistant-character {
+        width: 92px;
+        height: 112px;
+      }
+
+      .assistant-bubble {
+        width: 218px;
+        margin-bottom: 48px;
+        padding: 12px;
+      }
+
+      .assistant-bubble strong {
+        font-size: .78rem;
+      }
+
+      .assistant-bubble span {
+        font-size: .8rem;
+      }
+
+      .assistant-actions {
+        display: none;
+      }
+
+      .monks-assistant.is-minimized .assistant-character {
+        width: 76px;
+        height: 92px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .assistant-bubble {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .monks-assistant,
+      .assistant-character,
+      .assistant-character.is-talking img,
+      .assistant-character.is-pointing img,
+      .assistant-character.is-happy img {
+        animation: none;
+      }
+    }
+
+
   </style>
 </head>
 <body>
@@ -1405,6 +1749,27 @@
     </section>
   </main>
 
+
+  <!-- Mascote assistente estilo Clippy v2 -->
+  <div class="monks-assistant" id="monksAssistant" aria-live="polite">
+    <div class="assistant-bubble" id="assistantBubble">
+      <button class="assistant-close" id="assistantClose" type="button" aria-label="Minimizar mascote">×</button>
+      <strong id="assistantTitle">Ei, eu sou o assistente da Monks!</strong>
+      <span id="assistantText">Posso te guiar pelo site, mostrar a demo ou abrir o WhatsApp.</span>
+      <div class="assistant-actions">
+        <a class="assistant-mini-btn js-whatsapp" href="#" data-whatsapp="padrao">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="assistant-mini-bubble" id="assistantMiniBubble">
+      Ainda estou aqui, qualquer coisa é só clicar em mim novamente.
+    </div>
+
+    <button class="assistant-character" id="assistantCharacter" type="button" aria-label="Interagir com o mascote da Monks">
+      <img id="assistantImage" src="images/mascote-parado.png" alt="Mascote da Monks">
+    </button>
+  </div>
+
   <footer>
     <div class="container footer-inner">
       <span>© <span id="year"></span> Monks Tecnologia & Sistemas. Todos os direitos reservados.</span>
@@ -1469,6 +1834,174 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // ================================
+    // MASCOTE ASSISTENTE ESTILO CLIPPY V2
+    // ================================
+    const assistant = document.getElementById("monksAssistant");
+    const assistantBubble = document.getElementById("assistantBubble");
+    const assistantImage = document.getElementById("assistantImage");
+    const assistantCharacter = document.getElementById("assistantCharacter");
+    const assistantTitle = document.getElementById("assistantTitle");
+    const assistantText = document.getElementById("assistantText");
+    const assistantClose = document.getElementById("assistantClose");
+
+    const assistantStates = [
+      {
+        pose: "images/mascote-parado.png",
+        title: "Ei, eu sou o assistente da Monks!",
+        text: "Posso te guiar pelo site, mostrar a demo ou abrir o WhatsApp.",
+        animation: "idle"
+      },
+      {
+        pose: "images/mascote-falando.png",
+        title: "Site, sistema ou Google?",
+        text: "A Monks monta o caminho: presença online, sistema sob medida e perfil no Google bem ajeitado.",
+        animation: "talking",
+        goTo: "#pacotes"
+      },
+      {
+        pose: "images/mascote-apontando.png",
+        title: "Quer ver um sistema real funcionando?",
+        text: "A demo tem clientes, orçamentos, PDFs, relatórios e estrutura pronta pra testar.",
+        animation: "pointing",
+        goTo: "#demo"
+      },
+      {
+        pose: "images/mascote-feliz.png",
+        title: "Esse aqui é case real.",
+        text: "A SOS saiu do improviso e ganhou site, sistema, domínio, SSL e backup automático.",
+        animation: "happy",
+        goTo: "#case"
+      },
+      {
+        pose: "images/mascote-piscando.png",
+        title: "Curtiu? Bora conversar.",
+        text: "Clica no WhatsApp e chama a Monks. Sem enrolação, sem fumaça de vendedor.",
+        animation: "idle"
+      }
+    ];
+
+    const sectionAssistantStates = {
+      "servicos": {
+        pose: "images/mascote-falando.png",
+        title: "Aqui estão os serviços.",
+        text: "Site, sistema, suporte técnico e Perfil no Google. Tudo num pacote menos bagunçado que planilha esquecida.",
+        animation: "talking"
+      },
+      "google-business": {
+        pose: "images/mascote-apontando.png",
+        title: "Google também entra no jogo.",
+        text: "Perfil bem configurado ajuda o cliente a encontrar a sua empresa nas buscas e no Maps.",
+        animation: "pointing"
+      },
+      "case": {
+        pose: "images/mascote-feliz.png",
+        title: "Projeto real, da SOS SOLUÇÕES.",
+        text: "Esse projeto mostra como a Monks transforma bagunça operacional em sistema bonito e útil.",
+        animation: "happy"
+      },
+      "demo": {
+        pose: "images/mascote-apontando.png",
+        title: "Quer ver na prática?",
+        text: "Acesse a demo e veja como clientes, orçamentos e serviços podem ficar organizados em um sistema próprio.",
+        animation: "pointing"
+      },
+      "pacotes": {
+        pose: "images/mascote-falando.png",
+        title: "Escolha o nível da transformação.",
+        text: "Site simples, combo completo ou suporte técnico. Aqui o cliente encontra a porta certa.",
+        animation: "talking"
+      }
+    };
+
+    let assistantIndex = 0;
+    let lastSectionAssistantId = "";
+
+    function updateAssistantContent(state) {
+      assistantBubble.classList.add("is-changing");
+      assistantImage.style.opacity = "0";
+
+      setTimeout(() => {
+        assistantImage.src = state.pose;
+        assistantTitle.textContent = state.title;
+        assistantText.textContent = state.text;
+        assistantImage.style.opacity = "1";
+        assistantBubble.classList.remove("is-changing");
+      }, 120);
+
+      assistantCharacter.classList.remove("is-talking", "is-pointing", "is-happy");
+
+      if (state.animation === "talking") {
+        assistantCharacter.classList.add("is-talking");
+      }
+
+      if (state.animation === "pointing") {
+        assistantCharacter.classList.add("is-pointing");
+      }
+
+      if (state.animation === "happy") {
+        assistantCharacter.classList.add("is-happy");
+      }
+    }
+
+    function setAssistantState(index, shouldScroll = false) {
+      const state = assistantStates[index];
+      assistantIndex = index;
+      updateAssistantContent(state);
+
+      if (shouldScroll && state.goTo) {
+        const target = document.querySelector(state.goTo);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function nextAssistantState(shouldScroll = false) {
+      const nextIndex = (assistantIndex + 1) % assistantStates.length;
+      setAssistantState(nextIndex, shouldScroll);
+    }
+
+    assistantImage.addEventListener("error", () => {
+      assistantImage.src = "images/logo-monks.png";
+    }, { once: true });
+
+    assistantCharacter.addEventListener("click", () => {
+      if (assistant.classList.contains("is-minimized")) {
+        assistant.classList.remove("is-minimized");
+      }
+    });
+
+
+    assistantClose.addEventListener("click", () => {
+      assistant.classList.add("is-minimized");
+    });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const sectionId = entry.target.id;
+        const sectionState = sectionAssistantStates[sectionId];
+
+        if (!sectionState || sectionId === lastSectionAssistantId) return;
+        if (assistant.classList.contains("is-minimized")) return;
+
+        lastSectionAssistantId = sectionId;
+        updateAssistantContent(sectionState);
+      });
+    }, {
+      rootMargin: "-42% 0px -42% 0px",
+      threshold: 0.01
+    });
+
+    Object.keys(sectionAssistantStates).forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) sectionObserver.observe(section);
+    });
+
+    setAssistantState(0);
+
+
   </script>
 </body>
 </html>
