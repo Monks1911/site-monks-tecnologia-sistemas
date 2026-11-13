@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://monks1911.github.io/site-monks-tecnologia-sistemas/sitemap.xml
